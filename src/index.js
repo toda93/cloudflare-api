@@ -1,6 +1,6 @@
-import TelegramAPI from './TelegramAPI';
+import CloudflareAPI from './CloudflareAPI';
 
 
 export {
-    TelegramAPI,
+    CloudflareAPI,
 }
