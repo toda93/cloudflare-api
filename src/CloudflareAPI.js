@@ -41,7 +41,7 @@ class CloudflareAPI {
     }
 
     async createDNS(id, options = {}) {
-        const res = await this.client.post(`${END_POINT}/zones/${id}/dns_records`, options, false);
+        const res = await this.client.post(`${END_POINT}/zones/${id}/dns_records`, JSON.stringify(options), false);
         if (res.success) {
             return res.result;
         }
