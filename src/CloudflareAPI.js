@@ -1,5 +1,5 @@
 import HttpClient from '@azteam/http-client';
-import {ErrorException} from '@azteam/error';
+import { ErrorException } from '@azteam/error';
 
 const END_POINT = 'https://api.cloudflare.com/client/v4';
 
@@ -41,7 +41,8 @@ class CloudflareAPI {
     }
 
     async createDNS(id, options = {}) {
-        const res = await this.client.post(`${END_POINT}/zones/${id}/dns_records`, JSON.stringify(options), false);
+        const res = await this.client.addHeader('content-type', 'application/json').post(`${END_POINT}/zones/${id}/dns_records`, options, false);
+
         if (res.success) {
             return res.result;
         }
