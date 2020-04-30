@@ -40,8 +40,8 @@ class CloudflareAPI {
         throw new ErrorException('CLOUDFLARE_GET_LIST_DNS', JSON.stringify(res));
     }
 
-    async createDNS(id, options = {}) {
-        const res = await this.client.addHeader('content-type', 'application/json').post(`${END_POINT}/zones/${id}/dns_records`, options, false);
+    async createDNS(id, options = {}) {        
+        const res = await this.client.addHeader('Content-Type', 'application/json').post(`${END_POINT}/zones/${id}/dns_records`, JSON.stringify(options), false);
 
         if (res.success) {
             return res.result;
