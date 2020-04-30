@@ -14,7 +14,7 @@ class CloudflareAPI {
     }
 
     async getListDomain() {
-        const res = await this.client.responseJSON().get(`${END_POINT}/zones`);
+        const res = await this.client.get(`${END_POINT}/zones`);
         if (res.success) {
             return res.result;
         }
@@ -23,7 +23,7 @@ class CloudflareAPI {
     }
 
     async getDomain(name) {
-        const res = await this.client.responseJSON().get(`${END_POINT}/zones`, {
+        const res = await this.client.get(`${END_POINT}/zones`, {
             name
         });
         if (res.success) {
@@ -33,7 +33,7 @@ class CloudflareAPI {
     }
 
     async getListDNS(id) {
-        const res = await this.client.responseJSON().get(`${END_POINT}/zones/${id}/dns_records`);
+        const res = await this.client.get(`${END_POINT}/zones/${id}/dns_records`);
         if (res.success) {
             return res.result;
         }
@@ -41,7 +41,7 @@ class CloudflareAPI {
     }
 
     async createDNS(id, options = {}) {
-        const res = await this.client.postJSON(`${END_POINT}/zones/${id}/dns_records`, options);
+        const res = await this.client.post(`${END_POINT}/zones/${id}/dns_records`, options, false);
         if (res.success) {
             return res.result;
         }
